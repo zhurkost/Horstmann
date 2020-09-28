@@ -11,6 +11,7 @@ public class Queue {
 
     public void remove() {
         firstNode = firstNode.next;
+        firstNode.previous = null;
     }
 
     static class Node {
@@ -77,8 +78,9 @@ public class Queue {
             breadIterator.next();
         }
         System.out.println(breadIterator.cache.value);
-        System.out.println();
-
+        System.out.println("--------------------");
+        queueForBread.remove();
+        queueForBread.remove();
         while (breadIterator.hasPrevious()) {
             System.out.println(breadIterator.cache.value);
             breadIterator.previous();
@@ -86,4 +88,3 @@ public class Queue {
         System.out.println(breadIterator.cache.value);
     }
 }
-
