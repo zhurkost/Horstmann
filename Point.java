@@ -1,11 +1,11 @@
+import java.util.Objects;
+
 /**
  * Объект класса Point является точкой на на координатной плоскости X, Y.
  */
 public class Point {
-    private double x;
-    private double y;
-    private double newX;
-    private double newY;
+    protected double x;
+    protected double y;
 
     /**
      * создает точку на координатной плоскости X, Y.
@@ -56,8 +56,8 @@ public class Point {
      * @return
      */
     public Point translate(double x, double y) {
-        newX = this.x + x;
-        newY = this.y + y;
+        double newX = this.x + x;
+        double newY = this.y + y;
         return new Point(newX, newY);
     }
 
@@ -68,8 +68,8 @@ public class Point {
      * @return
      */
     public Point scale(double coefficient) {
-        newX = this.x * coefficient;
-        newY = this.y * coefficient;
+        double newX = this.x * coefficient;
+        double newY = this.y * coefficient;
         return new Point(newX, newY);
     }
 
@@ -82,5 +82,24 @@ public class Point {
     public void scaleMut(double coefficient) {
         this.x = this.x * coefficient;
         this.y = this.y * coefficient;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return Double.compare(point.x, x) == 0 &&
+                Double.compare(point.y, y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    public String toString() {
+        return getClass().getName()
+                + "[x=" + x + ",y=" + y +"]";
     }
 }

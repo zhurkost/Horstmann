@@ -22,5 +22,14 @@ public class PointTest {
         p2.scaleMut(0.5);
         System.out.println("x2 = " + p2.getX());
         System.out.println("y2 = " + p2.getY());
+        LabeledPoint p3 = new LabeledPoint("myPoint", 6, 6);
+        System.out.println(p3);
+        System.out.println(p);
+        Circle myCircle = new Circle(p, 2);
+        System.out.println(myCircle);
+        Rectangle myRectangle = new Rectangle(p3, 6, 2);
+        System.out.println(myRectangle);
+        Line myLine = new Line(p2, p3);
+        System.out.println(myLine);
     }
 }
